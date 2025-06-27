@@ -1,9 +1,17 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Users, Shield } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-teal-600 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -17,10 +25,15 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-teal-500 hover:bg-teal-400 text-white px-8 py-4 text-lg">
-              Browse Jobs Now
+            <Button size="lg" className="bg-teal-500 hover:bg-teal-400 text-white px-8 py-4 text-lg" asChild>
+              <Link to="/jobs">Browse Jobs Now</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg"
+              onClick={() => scrollToSection('how-it-works')}
+            >
               How It Works
             </Button>
           </div>
